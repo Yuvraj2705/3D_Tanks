@@ -92,7 +92,7 @@ BoxCollider:
   m_GameObject: {fileID: 9140428425755248255}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 9140428427221157356}
   - component: {fileID: 9140428427221157331}
   - component: {fileID: 9140428427221157330}
+  - component: {fileID: 6507642758025746529}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -273,6 +274,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &6507642758025746529
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140428427221157328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.06
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9140428427238745500
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +367,6 @@ MonoBehaviour:
   bullet: {fileID: 6759998439429998621, guid: 0327b3a104a871545bd3127599799de0, type: 3}
   firePoints:
   - {fileID: 9140428427272127758}
-  - {fileID: 0}
   force: 20
   destroyAfter: 2
   fireRate: 0.2
