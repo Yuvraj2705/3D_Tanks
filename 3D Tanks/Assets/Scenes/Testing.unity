@@ -1438,6 +1438,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1064315875088185969, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 600a1f8c747e799459ece1b0199c4396, type: 2}
     - target: {fileID: 1567215043047630961, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -1466,10 +1470,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3185396549349064353, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 600a1f8c747e799459ece1b0199c4396, type: 2}
+    - target: {fileID: 3480996100394566490, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 600a1f8c747e799459ece1b0199c4396, type: 2}
+    - target: {fileID: 4446306106717300951, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: UpForce
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446306106717300951, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: backForce
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4446306106717300951, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
       propertyPath: chargeBar
       value: 
       objectReference: {fileID: 9140428426341798203}
+    - target: {fileID: 7925699269686344134, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 600a1f8c747e799459ece1b0199c4396, type: 2}
+    - target: {fileID: 8913301219021905457, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e20cf2aae6855574fb28722b129027e9, type: 3}
 --- !u!114 &9140428426341798203 stripped
