@@ -6,3 +6,4 @@ Movement <<Pending>>
 Sound Effects <<Pending>>
 Camera Follow and Effects <<Pending>>
 VFX <<Pending>>
+Bullet knock-back <<Pending>>
