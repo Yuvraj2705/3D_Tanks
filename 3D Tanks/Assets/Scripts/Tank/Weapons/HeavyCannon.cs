@@ -66,7 +66,7 @@ namespace TanksWeapon
         {
             chargeBar.fillAmount = uniTimer / chargeTill;
 
-            if (Input.GetKey(KeyCode.Space) && canCharge)
+            if (Input.GetMouseButton(1) && canCharge)
             {
                 canCoolDown = false;
                 uniTimer += Time.deltaTime;
@@ -79,7 +79,7 @@ namespace TanksWeapon
                 } 
             }
 
-            if (canShoot && Input.GetKeyDown(KeyCode.F))
+            if (canShoot && Input.GetMouseButtonDown(0))
             {
                 foreach (var firePoint in firePoints)
                 {
@@ -104,7 +104,7 @@ namespace TanksWeapon
                 uniTimer -= Time.deltaTime;
             }
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetMouseButtonUp(1))
             {
                 if(isCharged)
                 {
