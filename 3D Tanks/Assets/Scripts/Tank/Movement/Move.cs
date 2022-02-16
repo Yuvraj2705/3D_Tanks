@@ -10,7 +10,10 @@ public class Move : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] float PlayerMoveSpeed = 5;
     [SerializeField] float PlayerRotationSpeed = 100;
-        
+
+    [Header("Audio")]
+    //[SerializeField] AudioSource engineSound;
+
     #endregion
 
     #region Private Variables
@@ -60,6 +63,8 @@ public class Move : MonoBehaviour
 
         Quaternion wr = transform.rotation * Quaternion.Euler(Vector3.up * PlayerRotationSpeed * horizontal * Time.deltaTime);
         rb.MoveRotation(wr);
+
+        //engineSound.Play();
     }
         
     #endregion

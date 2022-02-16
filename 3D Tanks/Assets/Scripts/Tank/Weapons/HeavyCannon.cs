@@ -24,6 +24,9 @@ namespace TanksWeapon
         [Header("Heavy Cannon Settings")]
         [SerializeField] float backForce = 2;
         [SerializeField] float UpForce = 1;
+
+        [Header("Audio")]
+        [SerializeField] AudioSource firingSound;
         #endregion
 
         #region Private Variables
@@ -83,6 +86,8 @@ namespace TanksWeapon
             {
                 foreach (var firePoint in firePoints)
                 {
+                    firingSound.Play();
+
                     var bulletInstance = Instantiate(bullet, firePoint.position, firePoint.rotation);
                     bulletInstance.AddForce(firePoint.forward * bulletSpeed, ForceMode.Impulse);
                     Destroy(bulletInstance.gameObject, destroyBulletAfter);
