@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4696173252910431117}
   - component: {fileID: 8189421536752016991}
   - component: {fileID: 7607966001234307094}
+  - component: {fileID: 3911272556345684457}
   m_Layer: 0
   m_Name: Test Car
   m_TagString: Untagged
@@ -131,5 +132,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5eee6f032e6aae43acbc9a3442a9a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnedRight: 0
-  SpawnedLeft: 0
+  LocationCount: 0
+--- !u!65 &3911272556345684457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124315724125345025}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 1.5}

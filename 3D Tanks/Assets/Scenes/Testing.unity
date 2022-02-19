@@ -4038,7 +4038,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644064861}
-  m_LocalRotation: {x: 0.4310305, y: 0.54816294, z: -0.39509356, w: 0.59802276}
+  m_LocalRotation: {x: 0.4310304, y: 0.54816306, z: -0.3950936, w: 0.5980227}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4369,7 +4369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 90, z: -30}
+  m_FollowOffset: {x: 0, y: 90.18991, z: -30.0633}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -6281,7 +6281,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.43103048, y: 0.548163, z: -0.39509365, w: 0.59802264}
+  m_LocalRotation: {x: 0.43103054, y: 0.548163, z: -0.39509362, w: 0.5980227}
   m_LocalPosition: {x: 525.81335, y: 91.4, z: 263.3249}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6885,7 +6885,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061228144}
-  m_LocalRotation: {x: 0.4310304, y: 0.54816306, z: -0.3950936, w: 0.5980227}
+  m_LocalRotation: {x: 0.4310305, y: 0.54816294, z: -0.39509353, w: 0.59802276}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7089,7 +7089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 90, z: -30}
+  m_FollowOffset: {x: 0, y: 90.18991, z: -30.0633}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -10455,7 +10455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 3
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1612702381
 Transform:
   m_ObjectHideFlags: 0
@@ -11517,7 +11517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1736052244
 Transform:
   m_ObjectHideFlags: 0
@@ -12478,7 +12478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 5
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1916655484
 Transform:
   m_ObjectHideFlags: 0
@@ -13081,7 +13081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 90, z: -30}
+  m_FollowOffset: {x: 0, y: 90.18991, z: -30.0633}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

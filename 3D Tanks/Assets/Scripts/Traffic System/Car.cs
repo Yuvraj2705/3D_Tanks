@@ -8,6 +8,7 @@ public class Car : MonoBehaviour
     #region Private Variables
 
     private Vector3 Destination;
+    private bool vehicleAhead;
 
     private NavMeshAgent navvy;
 
@@ -26,11 +27,11 @@ public class Car : MonoBehaviour
     {
         InitVariables();
         InitSettings();
+        GoToDestination();
     }
 
     void Update()
     {
-        GoToDestination();
         CheckDistance();
     }
 
@@ -44,6 +45,8 @@ public class Car : MonoBehaviour
     void InitVariables()
     {
         navvy = GetComponent<NavMeshAgent>();
+
+        vehicleAhead = false;
     }
 
     void InitSettings()
@@ -77,5 +80,24 @@ public class Car : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Collision Handler
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            navvy.isStopped = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            navvy.isStopped = false;
+        }
+    }
     #endregion
 }
