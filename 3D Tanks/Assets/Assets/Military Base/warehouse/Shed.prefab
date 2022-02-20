@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44f68aaf24a86a641af30ebc7dad0546, type: 2}
+  - {fileID: 2100000, guid: 81de40054edf9234087e06ad307d55cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -383,7 +383,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31eda413cd4a4bb46bdb2ee087d1fb15, type: 2}
+  - {fileID: 2100000, guid: 80201c261c4d2914fb0a581ae5f803d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -495,6 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8105454489133806740}
+  - component: {fileID: 8260334304411145661}
   m_Layer: 0
   m_Name: Shed
   m_TagString: Untagged
@@ -522,3 +523,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8260334304411145661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878718320285199918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.377548, y: 6.6394205, z: 15.501373}
+  m_Center: {x: 0.048339844, y: 3.2386389, z: -0.032226562}
