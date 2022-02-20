@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1702520140039054998}
   - component: {fileID: 8761111871047034715}
   - component: {fileID: 1350363454349082298}
+  - component: {fileID: 909530468308714937}
   m_Layer: 0
   m_Name: small_rock_05
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &909530468308714937
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264628664561219212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017885946, y: 0.02, z: 0.02}
+  m_Center: {x: -0.0006928928, y: -3.1867303e-10, z: 0.01}
