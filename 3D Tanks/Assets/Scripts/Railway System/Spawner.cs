@@ -110,7 +110,7 @@ public class Spawner : MonoBehaviour
     public Node.Status SpawnTrain()
     {
         uniTimeBase = 5;
-        var Instance = Instantiate(Train, SpawnPoint.position, Quaternion.identity);
+        var Instance = Instantiate(Train, SpawnPoint.position, SpawnPoint.rotation);
         Instance.GetComponent<Train>().Destination = EndPoint.position;
         return Node.Status.SUCCESS;
     }
