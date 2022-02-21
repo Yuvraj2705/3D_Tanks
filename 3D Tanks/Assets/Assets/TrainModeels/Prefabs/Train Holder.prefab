@@ -1221,7 +1221,7 @@ MonoBehaviour:
   Destination: {x: 0, y: 0, z: 0}
   SpeedTime: 1
   StoppingTime: 0.5
-  StartUnloadingAt: 3
+  StartUnloadingAt: 8
   UnloadTime: 5
   TimeToWaitAfterUnloading: 5
   goodsOne:
