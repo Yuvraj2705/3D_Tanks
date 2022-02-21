@@ -7,7 +7,7 @@ public class Train : MonoBehaviour
 
     float DistanceToCover;
     float StoppingDistance;
-    float maxSpeed = 40;
+    float maxSpeed = 100;
     int NoOfGoods;
     int counter = 0;
 
@@ -92,7 +92,7 @@ public class Train : MonoBehaviour
     public Node.Status Calculations()
     {
         DistanceToCover = Vector3.Distance(transform.position, Destination);
-        StoppingDistance = DistanceToCover - (DistanceToCover/5);
+        StoppingDistance = DistanceToCover - (DistanceToCover/3.3f);
         NoOfGoods = goodsOne.Length;
         return Node.Status.SUCCESS;
     }
@@ -154,7 +154,7 @@ public class Train : MonoBehaviour
         navvy.speed = Mathf.Lerp(navvy.speed, maxSpeed, SpeedTime * Time.deltaTime);
         if(navvy.speed > maxSpeed - 2)
         {
-            navvy.speed = 40;
+            navvy.speed = maxSpeed;
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
@@ -162,7 +162,7 @@ public class Train : MonoBehaviour
 
     public Node.Status DespawnTrain()
     {
-        if(Vector3.Distance(transform.position, Destination) <= 5)
+        if(Vector3.Distance(transform.position, Destination) <= 10)
         {
             Destroy(gameObject);
         }
