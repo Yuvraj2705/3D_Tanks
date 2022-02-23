@@ -99,13 +99,13 @@ public class WalkNStop : MonoBehaviour
 
     void AnimationHandler()
     {
-        if(currentAniValue == ani.GetFloat("Blend"))
+        if(currentAniValue == ani.GetFloat("VelX"))
         {
             return;
         }
         else
         {
-            ani.SetFloat("Blend", currentAniValue , blendSpeed ,Time.deltaTime);
+            ani.SetFloat("VelX", currentAniValue , blendSpeed ,Time.deltaTime);
         }
     }
 
@@ -123,7 +123,7 @@ public class WalkNStop : MonoBehaviour
 
     public Node.Status CheckDistance()
     {
-        if(Vector3.Distance(transform.position, destination) < 0.1)
+        if(Vector3.Distance(transform.position, destination) < 2)
         {
             counter++;
             if(counter == length)
