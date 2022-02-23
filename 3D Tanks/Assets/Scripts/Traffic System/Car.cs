@@ -118,6 +118,7 @@ public class Car : MonoBehaviour
             pTimer += Time.deltaTime;
             if(pTimer > pTimeBase)
             {
+                pTimer = 0;
                 if(navvy.isStopped)
                 {
                     return;

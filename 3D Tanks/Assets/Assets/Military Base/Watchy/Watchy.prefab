@@ -91,6 +91,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5257190281018517436}
   - component: {fileID: 1559081683485458636}
+  - component: {fileID: 128420330446510330}
+  - component: {fileID: 4923548580779045896}
+  - component: {fileID: 4787538585009098466}
   m_Layer: 0
   m_Name: Watchy
   m_TagString: Untagged
@@ -125,8 +128,47 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.863108, y: 2.9691384, z: 2.8328137}
-  m_Center: {x: 1.0527319, y: 1.4692804, z: -1.9464176}
+  m_Size: {x: 0.2209867, y: 2.9691386, z: 0.25491017}
+  m_Center: {x: 2.309592, y: 1.4692806, z: -2.8959444}
+--- !u!65 &128420330446510330
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881508475765456134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2202019, y: 2.9724312, z: 0.25690007}
+  m_Center: {x: -0.20641713, y: 1.4724414, z: -0.94034433}
+--- !u!65 &4923548580779045896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881508475765456134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21182656, y: 2.9691386, z: 0.25491017}
+  m_Center: {x: -0.20869124, y: 1.4692806, z: -2.8959444}
+--- !u!65 &4787538585009098466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881508475765456134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2209867, y: 2.9691386, z: 0.25491524}
+  m_Center: {x: 2.309592, y: 1.4692806, z: -0.9418666}
 --- !u!1 &9110671833361905229
 GameObject:
   m_ObjectHideFlags: 0
