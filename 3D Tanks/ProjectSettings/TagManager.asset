@@ -7,6 +7,7 @@ TagManager:
   - TS
   - Train
   - RS
+  - Car
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,88 +5,125 @@ public class Car : MonoBehaviour
 {
     #region Private Variables
 
-    private Vector3 Destination;
-    private bool vehicleAhead;
+    //Player Collision Timer
+    float pTimer = 0;
+    float pTimeBase = 1;
 
-    private NavMeshAgent navvy;
+    NavMeshAgent navvy;
 
-    #endregion
-
-    #region Public Variables
-
-    //Variable to Hide
-    public float LocationCount = 0;
+    RootNode rootNode;
 
     #endregion
 
-    #region In-built Functions
+    #region Public and Serialize Variables
+
+    [HideInInspector] public Vector3 Destination;
+
+    public Node.Status treeStatus = Node.Status.RUNNING;
+
+    #endregion
+
+    #region In-Built Functions
 
     void Start()
     {
         InitVariables();
-        InitSettings();
-        GoToDestination();
+
+        rootNode = new RootNode();
+
+        Sequence carAi = new Sequence("Car Ai");
+
+        Leaf setDestination = new Leaf("Setting Destination", SetDestination);
+        Leaf checkDistance = new Leaf("Checking Distance", CheckDistance);
+        Leaf destroyCar = new Leaf("Destroying the Car", DestroyCar);
+
+        carAi.AddChild(setDestination);
+        carAi.AddChild(checkDistance);
+        carAi.AddChild(destroyCar);
+
+        rootNode.AddChild(carAi);
     }
 
     void Update()
     {
-        CheckDistance();
+
+        if (treeStatus == Node.Status.RUNNING)
+            treeStatus = rootNode.Process();
     }
 
-    #endregion
-
-    #region Node Functions
     #endregion
 
     #region Custom Functions
 
     void InitVariables()
     {
+        
         navvy = GetComponent<NavMeshAgent>();
-
-        vehicleAhead = false;
-    }
-
-    void InitSettings()
-    {
-        if(LocationCount == 1)
-        {
-            Destination = GameObject.FindGameObjectWithTag("TS").GetComponent<TrafficControl>().EndPointLeft.position;
-            Debug.Log("LeftPosition Set");
-        }
-        else if(LocationCount == 2)
-        {
-            Destination = GameObject.FindGameObjectWithTag("TS").GetComponent<TrafficControl>().EndPointRight.position;
-            Debug.Log("RightPosition Set");
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void GoToDestination()
-    {
-        navvy.SetDestination(Destination);
-    }
-
-    void CheckDistance()
-    {
-        if(Vector3.Distance(transform.position, Destination) < 1)
-        {
-            Destroy(gameObject);
-        }
+        navvy.isStopped = false;
     }
 
     #endregion
 
-    #region Collision Handler
+    #region Node Functions
+
+    public Node.Status SetDestination()
+    {
+        navvy.SetDestination(Destination);
+        return Node.Status.SUCCESS;
+    }
+
+    public Node.Status CheckDistance()
+    {
+        if(Vector3.Distance(transform.position, Destination) < 5)
+        {
+            return Node.Status.SUCCESS;
+        }
+        return Node.Status.RUNNING;
+    }
+
+    public Node.Status DestroyCar()
+    {
+        Destroy(gameObject);
+        return Node.Status.SUCCESS;
+    }
+    #endregion
+
+    #region Collisions
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
+            if(navvy.isStopped)
+            {
+                return;
+            }
             navvy.isStopped = true;
+        }
+
+        if(other.gameObject.tag == "Car")
+        {
+            if(navvy.isStopped)
+            {
+                return;
+            }
+            navvy.isStopped = true;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            pTimer += Time.deltaTime;
+            if(pTimer > pTimeBase)
+            {
+                if(navvy.isStopped)
+                {
+                    return;
+                }
+                navvy.isStopped = true;
+            }
         }
     }
 
@@ -96,6 +131,19 @@ public class Car : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            if(!navvy.isStopped)
+            {
+                return;
+            }
+            navvy.isStopped = false;
+        }
+
+        if(other.gameObject.tag == "Car")
+        {
+            if(!navvy.isStopped)
+            {
+                return;
+            }
             navvy.isStopped = false;
         }
     }

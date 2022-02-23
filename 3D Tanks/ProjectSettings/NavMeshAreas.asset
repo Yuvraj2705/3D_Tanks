@@ -11,7 +11,7 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: Road
+  - name: 
     cost: 1
   - name: Left To Right
     cost: 1
@@ -31,15 +31,15 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
-  - name: 
+  - name: LTR
     cost: 1
   - name: 
     cost: 1
-  - name: 
+  - name: RTL
     cost: 1
   - name: 
     cost: 1
-  - name: 
+  - name: Road
     cost: 1
   - name: Trains
     cost: 1
