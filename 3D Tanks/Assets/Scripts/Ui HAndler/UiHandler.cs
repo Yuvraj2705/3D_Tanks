@@ -8,6 +8,8 @@ public class UiHandler : MonoBehaviour
     [SerializeField] GameObject WalkMan;
     [SerializeField] GameObject Player;
 
+    [SerializeField] GameObject minimapCam;
+
     [SerializeField] AudioClip[] Songs;
 
     bool minimapCheck;
@@ -28,6 +30,7 @@ public class UiHandler : MonoBehaviour
         isMusicPlaying = false;
         Minimap.SetActive(false);
         WalkMan.SetActive(false);
+        minimapCam.SetActive(false);
     }
 
     void Update()
@@ -86,11 +89,13 @@ public class UiHandler : MonoBehaviour
             if(minimapCheck)
             {
                 Minimap.SetActive(true);
+                minimapCam.SetActive(true);
                 minimapCheck = false;
             }
             else
             {
                 Minimap.SetActive(false);
+                minimapCam.SetActive(false);
                 minimapCheck = true;
             }
         }
