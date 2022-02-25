@@ -22,7 +22,7 @@ public class UiHandler : MonoBehaviour
     void Start()
     {
         ani = Player.GetComponent<Animator>();
-
+        musicCounter = 0;
         minimapCheck = true;
         musicCheck = true;
         isMusicPlaying = false;
@@ -55,6 +55,8 @@ public class UiHandler : MonoBehaviour
                 isMusicPlaying = false;
             }
         }
+
+        //MusicChanger();
     }
 
     void MusicChanger()
@@ -64,12 +66,10 @@ public class UiHandler : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Q))
             {
                 walkmanSpeaker.PlayOneShot(Songs[musicCounter]);
+                musicCounter += 1;
                 if(musicCounter == Songs.Length)
                 {
                     musicCounter = 0;
-                }
-                {
-                    musicCounter += 1;
                 }
             }
             else if(Input.GetKeyDown(KeyCode.E))
