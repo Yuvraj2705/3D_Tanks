@@ -99,6 +99,7 @@ public class Car : MonoBehaviour
                 return;
             }
             navvy.isStopped = true;
+            gameObject.GetComponentInChildren<CarWheels>().wheelRotCheck = false;
         }
 
         if(other.gameObject.tag == "Car")
@@ -108,6 +109,7 @@ public class Car : MonoBehaviour
                 return;
             }
             navvy.isStopped = true;
+            gameObject.GetComponentInChildren<CarWheels>().wheelRotCheck = false;
         }
     }
 
@@ -124,6 +126,7 @@ public class Car : MonoBehaviour
                     return;
                 }
                 navvy.isStopped = true;
+                gameObject.GetComponentInChildren<CarWheels>().wheelRotCheck = false;
             }
         }
     }
@@ -137,6 +140,7 @@ public class Car : MonoBehaviour
                 return;
             }
             navvy.isStopped = false;
+            gameObject.GetComponentInChildren<CarWheels>().wheelRotCheck = true;
         }
 
         if(other.gameObject.tag == "Car")
@@ -146,6 +150,7 @@ public class Car : MonoBehaviour
                 return;
             }
             navvy.isStopped = false;
+            gameObject.GetComponentInChildren<CarWheels>().wheelRotCheck = true;
         }
     }
     #endregion
