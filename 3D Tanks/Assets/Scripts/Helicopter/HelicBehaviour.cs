@@ -20,6 +20,14 @@ public class HelicBehaviour : MonoBehaviour
     //Helicopter Settings
     [SerializeField] float speed = 10f;
 
+    //Animations
+    [SerializeField] Animator prop;
+    [SerializeField] Animator rotor;
+
+    //Sound Effects
+    [SerializeField] AudioSource flying;
+    [SerializeField] AudioSource slowing;
+
     //Time Settings
     [SerializeField] float beforeLanding = 5f;
     [SerializeField] float landingWait = 5f;
@@ -38,6 +46,12 @@ public class HelicBehaviour : MonoBehaviour
         rootNode = new RootNode();
 
         Sequence helicopterAi = new Sequence("Helicopter AI");
+
+        prop = GetComponentInChildren<Animator>();
+        rotor = GetComponentInChildren<Animator>();
+
+        flying = GetComponent<AudioSource>();
+        slowing = GetComponent<AudioSource>();
 
         Leaf towardsAbove = new Leaf("Moving towards above point",MoveTowardsAbovePT);
         Leaf towardsHelipad = new Leaf("Moving towards helipad", TowardsHelipad);
@@ -79,6 +93,10 @@ public class HelicBehaviour : MonoBehaviour
         //transform.LookAt(new Vector3(aboveVEC.x, transform.rotation.y , transform.rotation.z) * Time.deltaTime * 5);
         if(Vector3.Distance(transform.position, aboveVEC) < 0.1f)
         {
+            prop.SetFloat("VelX", 0);
+            rotor.SetFloat("VelX", 0);
+            flying.Play();
+            slowing.Stop();
             waitingTime = beforeLanding;
             return Node.Status.SUCCESS;
         }
@@ -90,6 +108,10 @@ public class HelicBehaviour : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, helipadVEC, (speed/2) * Time.deltaTime);
         if(Vector3.Distance(transform.position, helipadVEC) < 0.1f)
         {
+            prop.SetFloat("VelX", 1);
+            rotor.SetFloat("VelX", 1);
+            flying.Stop();
+            slowing.Play();
             waitingTime = landingWait;
             return Node.Status.SUCCESS;
         }
@@ -101,6 +123,10 @@ public class HelicBehaviour : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, aboveVEC, (speed/2) * Time.deltaTime );
         if(Vector3.Distance(transform.position, aboveVEC) < 0.1f)
         {
+            prop.SetFloat("VelX", 0);
+            rotor.SetFloat("VelX", 0);
+            flying.Play();
+            slowing.Stop();
             waitingTime = endWait;
             return Node.Status.SUCCESS;
         }
@@ -113,6 +139,10 @@ public class HelicBehaviour : MonoBehaviour
         //transform.LookAt(new Vector3(transform.rotation.x ,correctedRotation.y, transform.rotation.z));
         if(Vector3.Distance(transform.position, finishPT) < 0.1f)
         {
+            prop.SetFloat("VelX", 0);
+            rotor.SetFloat("VelX", 0);
+            flying.Play();
+            slowing.Stop();
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
