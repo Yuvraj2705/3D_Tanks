@@ -24,10 +24,6 @@ public class HelicBehaviour : MonoBehaviour
     [SerializeField] Animator prop;
     [SerializeField] Animator rotor;
 
-    //Sound Effects
-    [SerializeField] AudioSource flying;
-    [SerializeField] AudioSource slowing;
-
     //Time Settings
     [SerializeField] float beforeLanding = 5f;
     [SerializeField] float landingWait = 5f;
@@ -49,9 +45,6 @@ public class HelicBehaviour : MonoBehaviour
 
         prop = GetComponentInChildren<Animator>();
         rotor = GetComponentInChildren<Animator>();
-
-        flying = GetComponent<AudioSource>();
-        slowing = GetComponent<AudioSource>();
 
         Leaf towardsAbove = new Leaf("Moving towards above point",MoveTowardsAbovePT);
         Leaf towardsHelipad = new Leaf("Moving towards helipad", TowardsHelipad);
@@ -95,8 +88,6 @@ public class HelicBehaviour : MonoBehaviour
         {
             prop.SetFloat("VelX", 0);
             rotor.SetFloat("VelX", 0);
-            flying.Play();
-            slowing.Stop();
             waitingTime = beforeLanding;
             return Node.Status.SUCCESS;
         }
@@ -110,8 +101,6 @@ public class HelicBehaviour : MonoBehaviour
         {
             prop.SetFloat("VelX", 1);
             rotor.SetFloat("VelX", 1);
-            flying.Stop();
-            slowing.Play();
             waitingTime = landingWait;
             return Node.Status.SUCCESS;
         }
@@ -125,8 +114,6 @@ public class HelicBehaviour : MonoBehaviour
         {
             prop.SetFloat("VelX", 0);
             rotor.SetFloat("VelX", 0);
-            flying.Play();
-            slowing.Stop();
             waitingTime = endWait;
             return Node.Status.SUCCESS;
         }
@@ -141,8 +128,6 @@ public class HelicBehaviour : MonoBehaviour
         {
             prop.SetFloat("VelX", 0);
             rotor.SetFloat("VelX", 0);
-            flying.Play();
-            slowing.Stop();
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
