@@ -134,6 +134,7 @@ public class HelicBehaviour : MonoBehaviour
     }
     public Node.Status Death()
     {
+        GameObject.FindGameObjectWithTag("HeliSpawn").GetComponent<HelicSpawner>().CanSpawn = true;
         Destroy(gameObject);
         return Node.Status.SUCCESS;
     }

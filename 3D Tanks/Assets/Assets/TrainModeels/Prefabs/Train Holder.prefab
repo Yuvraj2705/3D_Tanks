@@ -1223,9 +1223,9 @@ MonoBehaviour:
   Destination: {x: 0, y: 0, z: 0}
   SpeedTime: 1
   StoppingTime: 0.5
-  StartUnloadingAt: 8
-  UnloadTime: 5
-  TimeToWaitAfterUnloading: 5
+  StartUnloadingAt: 10
+  UnloadTime: 20
+  TimeToWaitAfterUnloading: 15
   goodsOne:
   - {fileID: 7889265026844701492}
   - {fileID: 3715913540963225437}

@@ -49,8 +49,6 @@ MonoBehaviour:
   speed: 20
   prop: {fileID: 2208401259476815112}
   rotor: {fileID: 3929822193363190854}
-  flying: {fileID: 6771325689333857170}
-  slowing: {fileID: 0}
   beforeLanding: 3
   landingWait: 60
   endWait: 3
