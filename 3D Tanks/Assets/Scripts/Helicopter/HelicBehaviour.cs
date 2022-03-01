@@ -11,7 +11,22 @@ public class HelicBehaviour : MonoBehaviour
     float waitingTime;
     Vector3 correctedRotation;
     Vector3 rot;
+
     RootNode rootNode;
+
+    Sequence helicopterAi;
+
+    Leaf towardsAbove;
+    Leaf towardsHelipad;
+    Leaf towardsAboveAgain;
+    Leaf towardsEnd;
+    Leaf death;
+    Leaf timeWait;
+    Leaf playerCheck;
+
+    Leaf canStop;
+    Leaf canStart;
+    Leaf fullSpeed;
 
     #endregion
 
@@ -41,22 +56,28 @@ public class HelicBehaviour : MonoBehaviour
     {
         rootNode = new RootNode();
 
-        Sequence helicopterAi = new Sequence("Helicopter AI");
+        helicopterAi = new Sequence("Helicopter AI");
 
-        Leaf towardsAbove = new Leaf("Moving towards above point",MoveTowardsAbovePT);
-        Leaf towardsHelipad = new Leaf("Moving towards helipad", TowardsHelipad);
-        Leaf towardsAboveAgain = new Leaf("Moving upwards to above point", MoveAbove);
-        Leaf towardsEnd = new Leaf("Moving towards end point", MoveTowardsEnd);
-        Leaf death = new Leaf("Moving above points", Death);
-        Leaf timeWait = new Leaf("Waiting for time", WaitTime);
-        Leaf playerCheck = new Leaf("Checking Helipad", CheckHelipad);
-        Leaf playAnim = new Leaf("Playing Animation", PlayAnim);
+        towardsAbove = new Leaf("Moving towards above point",MoveTowardsAbovePT);
+        towardsHelipad = new Leaf("Moving towards helipad", TowardsHelipad);
+        towardsAboveAgain = new Leaf("Moving upwards to above point", MoveAbove);
+        towardsEnd = new Leaf("Moving towards end point", MoveTowardsEnd);
+        death = new Leaf("Moving above points", Death);
+        timeWait = new Leaf("Waiting for time", WaitTime);
+        playerCheck = new Leaf("Checking Helipad", CheckHelipad);
+
+        canStop = new Leaf("CAn Stop Anim", SlowingDown);
+        canStart = new Leaf("Can Start Anim", SpeedingUp);
+        fullSpeed = new Leaf("Full Speed", FullSpeed);
 
         helicopterAi.AddChild(towardsAbove);
         helicopterAi.AddChild(playerCheck);
         helicopterAi.AddChild(towardsHelipad);
+        helicopterAi.AddChild(canStop);
         helicopterAi.AddChild(timeWait);
-        helicopterAi.AddChild(playAnim);
+        helicopterAi.AddChild(canStart);
+        helicopterAi.AddChild(timeWait);
+        helicopterAi.AddChild(fullSpeed);
         helicopterAi.AddChild(towardsAboveAgain);
         helicopterAi.AddChild(timeWait);
         helicopterAi.AddChild(towardsEnd);
@@ -79,14 +100,34 @@ public class HelicBehaviour : MonoBehaviour
     
     #region  Node Functions
 
+    public Node.Status SlowingDown()
+    {
+        prop.SetBool("CanStop",true);
+        return Node.Status.SUCCESS;
+    }
+
+    public Node.Status SpeedingUp()
+    {
+        prop.SetBool("CanStop",false);
+        prop.SetBool("CanStart",true);
+        waitingTime = 4;
+        return Node.Status.SUCCESS;
+    }
+
+    public Node.Status FullSpeed()
+    {
+        prop.SetBool("CanStart",false);
+        return Node.Status.SUCCESS;
+    }
+
     public Node.Status MoveTowardsAbovePT()
     {
         transform.position = Vector3.MoveTowards(transform.position, aboveVEC, speed * Time.deltaTime );
         //transform.LookAt(new Vector3(aboveVEC.x, transform.rotation.y , transform.rotation.z) * Time.deltaTime * 5);
         if(Vector3.Distance(transform.position, aboveVEC) < 0.1f)
         {
-            prop.SetBool("IsSlowing", false);
-            rotor.SetBool("IsSlowing", false);
+            //prop.SetBool("IsSlowing", false);
+            //rotor.SetBool("IsSlowing", false);
             waitingTime = beforeLanding;
             return Node.Status.SUCCESS;
         }
@@ -98,19 +139,12 @@ public class HelicBehaviour : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, helipadVEC, (speed/2) * Time.deltaTime);
         if(Vector3.Distance(transform.position, helipadVEC) < 0.1f)
         {
-            prop.SetBool("IsSlowing", true);
-            rotor.SetBool("IsSlowing", true);
+            //prop.SetBool("IsSlowing", true);
+            //rotor.SetBool("IsSlowing", true);
             waitingTime = landingWait;
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
-    }
-
-    public Node.Status PlayAnim()
-    {
-            prop.SetBool("IsSlowing", false);
-            rotor.SetBool("IsSlowing", false);
-            return Node.Status.SUCCESS;
     }
 
     public Node.Status MoveAbove()
@@ -130,8 +164,8 @@ public class HelicBehaviour : MonoBehaviour
         //transform.LookAt(new Vector3(transform.rotation.x ,correctedRotation.y, transform.rotation.z));
         if(Vector3.Distance(transform.position, finishPT) < 0.1f)
         {
-            prop.SetBool("IsSlowing", false);
-            rotor.SetBool("IsSlowing", false);
+            //prop.SetBool("IsSlowing", false);
+            //rotor.SetBool("IsSlowing", false);
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
