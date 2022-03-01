@@ -66,7 +66,7 @@ public class HelicBehaviour : MonoBehaviour
         timeWait = new Leaf("Waiting for time", WaitTime);
         playerCheck = new Leaf("Checking Helipad", CheckHelipad);
 
-        canStop = new Leaf("CAn Stop Anim", SlowingDown);
+        canStop = new Leaf("Can Stop Anim", SlowingDown);
         canStart = new Leaf("Can Start Anim", SpeedingUp);
         fullSpeed = new Leaf("Full Speed", FullSpeed);
 
@@ -103,6 +103,7 @@ public class HelicBehaviour : MonoBehaviour
     public Node.Status SlowingDown()
     {
         prop.SetBool("CanStop",true);
+        rotor.SetBool("CanStop",true);
         return Node.Status.SUCCESS;
     }
 
@@ -110,6 +111,10 @@ public class HelicBehaviour : MonoBehaviour
     {
         prop.SetBool("CanStop",false);
         prop.SetBool("CanStart",true);
+        
+        rotor.SetBool("CanStop",false);
+        rotor.SetBool("CanStart",true);
+
         waitingTime = 4;
         return Node.Status.SUCCESS;
     }
@@ -117,6 +122,7 @@ public class HelicBehaviour : MonoBehaviour
     public Node.Status FullSpeed()
     {
         prop.SetBool("CanStart",false);
+        rotor.SetBool("CanStart",false);
         return Node.Status.SUCCESS;
     }
 

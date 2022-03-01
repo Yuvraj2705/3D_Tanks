@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6771325689333857170}
   - component: {fileID: 536935626008525992}
   m_Layer: 0
-  m_Name: Helli D
+  m_Name: Helicopter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,19 +186,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203855478704406294, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6282673
+      value: 0.0073173908
       objectReference: {fileID: 0}
     - target: {fileID: 203855478704406294, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.23705666
+      value: -0.74476486
       objectReference: {fileID: 0}
     - target: {fileID: 203855478704406294, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70606244
+      value: -0.0065578567
       objectReference: {fileID: 0}
     - target: {fileID: 203855478704406294, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.224856
+      value: -0.6672547
       objectReference: {fileID: 0}
     - target: {fileID: 203855478704406294, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203855478704406294, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 38.127
+      value: 1980
       objectReference: {fileID: 0}
     - target: {fileID: 462687913587476313, guid: 716969f869def1b43b9be1d1c371d423, type: 3}
       propertyPath: m_RootOrder
@@ -323,7 +323,7 @@ Animator:
   m_GameObject: {fileID: 1458343011092569948}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5c0b766c246dfc47a2de8e53333dd72, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
