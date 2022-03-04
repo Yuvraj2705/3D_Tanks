@@ -38,6 +38,7 @@ public class FirstPerson : MonoBehaviour
     [Header("Crouch Parameter")]
     [SerializeField] private float crouchHeight = 0.5f;
     [SerializeField] private float standingHeight = 2f;
+    [SerializeField] private float crouchRaycast = 3.5f;
     [SerializeField] private float timeToCrouch = 0.25f;
     [SerializeField] private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
     [SerializeField] private Vector3 standingCenter = new Vector3(0, 0f, 0);
@@ -161,7 +162,7 @@ public class FirstPerson : MonoBehaviour
     private IEnumerator CrouchStand()
     {
 
-        if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
+        if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, crouchRaycast))
             yield break;
 
         duringCrouchAnimation = true;
