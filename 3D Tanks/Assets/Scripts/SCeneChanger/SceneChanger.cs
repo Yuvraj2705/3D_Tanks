@@ -12,4 +12,9 @@ public class SceneChanger : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Training()
+    {
+        SceneManager.LoadScene("Act Two");
+    }
 }
