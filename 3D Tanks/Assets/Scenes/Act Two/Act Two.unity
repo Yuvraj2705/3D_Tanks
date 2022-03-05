@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7128323, g: 0.7144012, b: 0.69274676, a: 1}
+  m_IndirectSpecularColor: {r: 0.71283275, g: 0.71440166, b: 0.69274735, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3934,7 +3934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0d47a794da6444a5a681402a5bc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBeforeComeDown: 5
+  TimeBeforeComeDown: 2
   Targets:
   - {fileID: 1572927624}
   - {fileID: 757022030}
@@ -6008,7 +6008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0d47a794da6444a5a681402a5bc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBeforeComeDown: 5
+  TimeBeforeComeDown: 2
   Targets:
   - {fileID: 1538123220}
   - {fileID: 1273118265}
@@ -7656,7 +7656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0d47a794da6444a5a681402a5bc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBeforeComeDown: 5
+  TimeBeforeComeDown: 2
   Targets:
   - {fileID: 76579212}
   - {fileID: 1290164391}
@@ -12888,7 +12888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0d47a794da6444a5a681402a5bc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBeforeComeDown: 5
+  TimeBeforeComeDown: 2
   Targets:
   - {fileID: 1284391987}
   - {fileID: 2143058298}
