@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PickUp : SelectionManager
 {
@@ -19,6 +20,41 @@ public class PickUp : SelectionManager
     public bool equipped;
     public static bool slotFull;
 
+    [Header("Gun Information")]
+    [SerializeField]
+    String Name = "GUN";
+
+    [SerializeField]
+    Sprite Image;
+
+    [SerializeField]
+    Sprite DefaultImage;
+
+    [SerializeField]
+    int Mag;
+
+    [SerializeField]
+    String CurrentMode;
+
+    [Header("UI")]
+    
+    [SerializeField]
+    TextMeshProUGUI GunName;
+
+    [SerializeField]
+    TextMeshProUGUI GunMode;
+
+    [SerializeField]
+    Image GunImage;
+
+    [SerializeField]
+    TextMeshProUGUI GunBullets;
+
+    [SerializeField]
+    TextMeshProUGUI GunMag;
+
+
+
     public override void ImplementCode()
     {
         //Check if player is in range and "E" is pressed
@@ -30,6 +66,8 @@ public class PickUp : SelectionManager
         //Setup
         if (!equipped)
         {
+            UiOnDrop();
+
             rb.isKinematic = false;
             coll.isTrigger = false;
             weaponSway.enabled = false;
@@ -37,6 +75,8 @@ public class PickUp : SelectionManager
         }
         if (equipped)
         {
+            UIOnPickUp();
+
             rb.isKinematic = true;
             coll.isTrigger = true;
             slotFull = true;
@@ -53,6 +93,8 @@ public class PickUp : SelectionManager
 
     private void PickUpS()
     {
+        UIOnPickUp();
+
         equipped = true;
         slotFull = true;
 
@@ -75,6 +117,8 @@ public class PickUp : SelectionManager
 
     private void Drop()
     {
+        UiOnDrop();
+
         equipped = false;
         slotFull = false;
 
@@ -92,7 +136,7 @@ public class PickUp : SelectionManager
         rb.AddForce(fpsCam.forward * dropForwardForce, ForceMode.Impulse);
         rb.AddForce(fpsCam.up * dropUpwardForce, ForceMode.Impulse);
         //Add random rotation
-        float random = Random.Range(-1f, 1f);
+        float random = UnityEngine.Random.Range(-1f, 1f);
         rb.AddTorque(new Vector3(random, random, random) * 10);
 
         //Disable script
@@ -100,5 +144,29 @@ public class PickUp : SelectionManager
         shootManager.enabled = false;
 
         //Disable UI
+    }
+
+    void UIOnPickUp()
+    {
+        GunName.text = Name;
+        GunMode.text = CurrentMode;
+        if(Mag<10)
+        {
+            GunMag.text = "/0" + Mag.ToString();
+        }
+        else
+        {
+            GunMag.text = "/" + Mag.ToString();
+        }
+        GunImage.GetComponent<Image>().sprite = Image;
+    }
+
+    void UiOnDrop()
+    {
+        GunName.text = "Hand";
+        GunMag.text = "/00";
+        GunImage.GetComponent<Image>().sprite = DefaultImage;
+        GunBullets.text = "00";
+        GunMode.text = "";
     }
 }

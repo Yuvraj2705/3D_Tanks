@@ -9,6 +9,7 @@ TagManager:
   - RS
   - Car
   - HeliSpawn
+  - SceneHandler
   layers:
   - Default
   - TransparentFX

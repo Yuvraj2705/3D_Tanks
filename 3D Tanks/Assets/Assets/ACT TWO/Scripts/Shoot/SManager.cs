@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class SManager : MonoBehaviour
 {
@@ -54,6 +54,14 @@ public class SManager : MonoBehaviour
     [SerializeField]
     bool ModeChanger;
 
+    [Header("Ui Elements")]
+
+    [SerializeField]
+    TextMeshProUGUI GunBullets;
+
+    [SerializeField]
+    TextMeshProUGUI GunMode;
+
     void Awake()
     {
         canShoot = true;
@@ -64,9 +72,20 @@ public class SManager : MonoBehaviour
 
     void Update()
     {
+        bulletsUI();
+
         if(Input.GetKeyDown(ModeChangeKey) && canSwitch)
         {
             ModeChanger = !ModeChanger;
+            if(ModeChanger)
+            {
+                GunMode.text = "SINGLE";
+            }
+
+            if(!ModeChanger)
+            {
+                GunMode.text = "AUTO";
+            }
         }
         
         if(ModeChanger)
@@ -126,7 +145,7 @@ public class SManager : MonoBehaviour
     void ShootMech()
     {
         muzzle.Play();
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 1000))
             {
                 var damage = hit.transform.GetComponent<ShootManager>();
                 if (damage != null)
@@ -135,5 +154,15 @@ public class SManager : MonoBehaviour
                 }
                 Debug.Log(hit.transform.name);
             }
+    }
+
+    void bulletsUI()
+    {
+        if(Bullets < 10)
+        {
+            GunBullets.text = "0" + Bullets.ToString();
+            return;
+        }
+        GunBullets.text = Bullets.ToString();
     }
 }
