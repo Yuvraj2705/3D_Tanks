@@ -1,90 +1,125 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SManager : MonoBehaviour
 {
-    [Header("Gun Stats")]
-    public float timeBetweenShooting = 0.05f;
-    public float range = 100f;
-    public float reloadTime = 1f;
-    public float timeBetweenShots;
-    public int magazineSize;
-    public int bulletsPerTap;
-    int bulletsLeft, bulletsShot;
-
-    //bools 
-    bool readyToShoot, reloading;
+    float timer;
 
     [Header("Settings")]
-    [SerializeField] Camera fpsCam;
-    [SerializeField] KeyCode ShootKey;
-    [SerializeField] int bulletDamage = 1;
 
-    [Header("HUD")]
-    public Text ammo; 
+    [SerializeField]
+    float bulletsPerSecond = 0.1f;
+
+    float timeBase = 0;
+
+    [SerializeField]
+    int MagzineSize = 32;
+
+    [SerializeField]
+    float reloadTime = 2.5f;
+
+    [SerializeField] 
+    int bulletDamage = 1;
+
+    int Bullets;
+
+    bool canReload;
+    bool canShoot;
+
+    [Header("Components")]
+
+    [SerializeField] 
+    Camera fpsCam;
+
+    [Header("Keys")]
+
+    [SerializeField] 
+    KeyCode ShootKey;
+
+    [SerializeField] 
+    KeyCode ReloadKey;
+
+    [SerializeField] 
+    KeyCode ModeChangeKey;
 
     RaycastHit hit;
+    
+    bool ModeChanger;
+
     void Awake()
     {
-        bulletsLeft = magazineSize;
-        readyToShoot = true;
+        canShoot = true;
+        canReload = true;
+        Bullets = MagzineSize;
+        timeBase = bulletsPerSecond;
     }
+
     void Update()
     {
-        ammo.text = bulletsLeft + " / " + magazineSize;
 
-        if (bulletsLeft > 0)
+        if(Input.GetKeyDown(ModeChangeKey))
         {
-            //Single_Mode
-            /*bulletsPerTap = 1;
-            SingleMode();*/
-
-            //Auto_Mode
-            bulletsPerTap = bulletsLeft;
-            timeBetweenShots = 2f ;
+            ModeChanger = !ModeChanger;
+        }
+        
+        if(ModeChanger)
+        {
+            SingleMode();
+        }
+        else
+        {
             AutoMode();
         }
-
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
-        {
-            Reload();
-        }
-
-        if (bulletsLeft == 0)
-        {
-            Reload();
-        }
     }
+
     void SingleMode()
     {
-        if (Input.GetKeyDown(ShootKey))
+        if (Input.GetKeyDown(ShootKey) && canShoot && Bullets > 0)
         {
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100))
-            {
-                var damage = hit.transform.GetComponent<ShootManager>();
-                if (damage != null)
-                {
-                    damage.Damage(bulletDamage);
-                }
-                Debug.Log(hit.transform.name);
-            }
-
-            bulletsLeft--;
-            bulletsShot--;
-
-            Invoke("ResetShot", timeBetweenShooting);
-
-            if (bulletsShot > 0 && bulletsLeft > 0)
-            {
-                Invoke("Shoot", timeBetweenShots);
-            }
+            ShootMech();
+            Bullets = Bullets - 1;
+        }
+        if(canReload && Input.GetKeyDown(ReloadKey))
+        {
+            canShoot = false;
+            StartCoroutine(Reload());
         }
     }
+
     void AutoMode()
     {
-        if (Input.GetKey(ShootKey))
+        if (Input.GetKey(ShootKey) && canShoot)
         {
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100))
+            timer += Time.deltaTime;
+            if(timer > timeBase && Bullets > 0)
+            {
+                timer = 0;
+                ShootMech();
+                Bullets = Bullets - 1;
+            }
+        }
+        if(canReload && Input.GetKeyDown(ReloadKey))
+        {
+            canReload = false;
+            canShoot = false;
+            StartCoroutine(Reload());
+        }
+    }
+
+    IEnumerator Reload()
+    {
+        Debug.Log("Reloading");
+        yield return new WaitForSeconds(reloadTime);
+        Debug.Log("Reloaded");
+        Bullets = MagzineSize;
+        canShoot = true;
+        canReload = true;
+    }
+
+    void ShootMech()
+    {
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100))
             {
                 var damage = hit.transform.GetComponent<ShootManager>();
                 if (damage != null)
@@ -93,30 +128,5 @@ public class SManager : MonoBehaviour
                 }
                 Debug.Log(hit.transform.name);
             }
-
-            bulletsLeft--;
-            bulletsShot--;
-
-            Invoke("ResetShot", timeBetweenShooting);
-
-            if (bulletsShot > 0 && bulletsLeft > 0)
-            {
-                Invoke("Shoot", timeBetweenShots);
-            }
-        }
-    }
-    private void ResetShot()
-    {
-        readyToShoot = true;
-    }
-    private void Reload()
-    {
-        reloading = true;
-        Invoke("ReloadFinished", reloadTime);
-    }
-    private void ReloadFinished()
-    {
-        bulletsLeft = magazineSize;
-        reloading = false;
     }
 }
