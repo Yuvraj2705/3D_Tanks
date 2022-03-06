@@ -113,6 +113,7 @@ public class ShootingSessions : MonoBehaviour
         {
             foreach(var target in Targets)
             {
+                target.GetComponent<TargetD>().currentHits = target.GetComponent<TargetD>().MaxHits;
                 target.SetBool("GoUp",false);
                 target.SetBool("GoDown",true);
                 zoneScript.canChange = true;

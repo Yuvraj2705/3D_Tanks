@@ -6,9 +6,10 @@ public class TargetD : ShootManager
     Animator Targetanimator;
 
     [SerializeField]
-    int MaxHits = 5;
+    public int MaxHits = 5;
 
-    int currentHits;
+    [HideInInspector]
+    public int currentHits;
 
      void Awake()
     {
@@ -21,6 +22,7 @@ public class TargetD : ShootManager
         currentHits -= damage;
         if(currentHits <= 0)
         {
+            currentHits = MaxHits;
             Targetanimator.SetBool("GoDown",true);
             Targetanimator.SetBool("GoUp",false);
         }
