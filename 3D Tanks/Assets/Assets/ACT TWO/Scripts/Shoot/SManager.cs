@@ -27,10 +27,16 @@ public class SManager : MonoBehaviour
     bool canReload;
     bool canShoot;
 
+    [SerializeField] 
+    bool canSwitch;
+
     [Header("Components")]
 
     [SerializeField] 
     Camera fpsCam;
+
+    [SerializeField]
+    ParticleSystem muzzle;
 
     [Header("Keys")]
 
@@ -44,7 +50,8 @@ public class SManager : MonoBehaviour
     KeyCode ModeChangeKey;
 
     RaycastHit hit;
-    
+
+    [SerializeField]
     bool ModeChanger;
 
     void Awake()
@@ -57,8 +64,7 @@ public class SManager : MonoBehaviour
 
     void Update()
     {
-
-        if(Input.GetKeyDown(ModeChangeKey))
+        if(Input.GetKeyDown(ModeChangeKey) && canSwitch)
         {
             ModeChanger = !ModeChanger;
         }
@@ -119,6 +125,7 @@ public class SManager : MonoBehaviour
 
     void ShootMech()
     {
+        muzzle.Play();
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 100))
             {
                 var damage = hit.transform.GetComponent<ShootManager>();
