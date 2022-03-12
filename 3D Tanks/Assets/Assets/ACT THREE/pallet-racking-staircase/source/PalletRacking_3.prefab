@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 5018483425189218447}
   - component: {fileID: 2637009980655052591}
   - component: {fileID: 5642545200898609404}
+  - component: {fileID: 6307325546186479664}
   m_Layer: 0
   m_Name: PalletRacking_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5018483425189218447
 Transform:
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6307325546186479664
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697293142134893091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02234807, y: 0.04202538, z: 0.02098549}
+  m_Center: {x: 0.0000069524763, y: -0.000012687095, z: 0.010492744}
