@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 9104814593210281257}
   - component: {fileID: 5989769650123108623}
   - component: {fileID: 7939185123673511001}
+  - component: {fileID: 1130637735946799599}
   m_Layer: 0
   m_Name: bldg1_Wall_01
   m_TagString: Untagged
@@ -189,6 +190,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25798535, y: 2.590013, z: 0.7398172}
   m_Center: {x: 0.05081397, y: 1.2842758, z: -0.33464786}
+--- !u!65 &1130637735946799599
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474471390589764431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.533567, y: 0.07796018, z: 5.1200004}
+  m_Center: {x: 2.7667823, y: 2.5410228, z: -2.5600002}
 --- !u!1 &5665623916091089811
 GameObject:
   m_ObjectHideFlags: 0
