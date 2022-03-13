@@ -17,12 +17,18 @@ public class TargetTwo : ShootManager
 
     bool isDead;
 
+    [SerializeField]
+    GameObject DrillObject;
+
+    DrillSession script;
+
     void Start()
     {
         isDead = false;
         counter = 0;
         currentHits = MaxHits;
         Targetanimator = GetComponent<Animator>();
+        script = GetComponent<DrillSession>();
     }
 
     void Update()
@@ -54,6 +60,7 @@ public class TargetTwo : ShootManager
         currentHits -= damage;
         if (currentHits <= 0)
         {
+            script.enemyCount += 1;
             isDead = true;
             Targetanimator.SetBool("GoDown", true);
         }

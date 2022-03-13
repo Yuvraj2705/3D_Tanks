@@ -11,10 +11,16 @@ public class TargetThree : ShootManager
 
     int currentHits;
 
+    [SerializeField]
+    GameObject DrillObject;
+
+    DrillSession script;
+
     void Start()
     {
         currentHits = MaxHits;
         Targetanimator = GetComponent<Animator>();
+        script = GetComponent<DrillSession>();
     }
 
     public override void Damage(int damage)
@@ -22,6 +28,7 @@ public class TargetThree : ShootManager
         currentHits -= damage;
         if (currentHits <= 0)
         {
+            script.enemyCount += 1;
             Targetanimator.SetBool("GoDown", true);
         }
     }
