@@ -28,7 +28,7 @@ public class TargetThree : ShootManager
         currentHits -= damage;
         if (currentHits <= 0)
         {
-            script.enemyCount += 1;
+            //script.enemyCount += 1;
             Targetanimator.SetBool("GoDown", true);
         }
     }
