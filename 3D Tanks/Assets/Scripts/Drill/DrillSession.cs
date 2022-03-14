@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DrillSession : MonoBehaviour
 {
@@ -8,8 +9,12 @@ public class DrillSession : MonoBehaviour
     //Timer
     float timer = 0;
 
+    int graderOne;
+    int graderTwo;
+    int FinalGrade = 0;
+
     //enemy count
-    public float enemyCount = 0;
+    
     //float totalEnemies = 28;
 
     RootNode rootNode;
@@ -18,12 +23,23 @@ public class DrillSession : MonoBehaviour
 
     #region Serialize and Public Variable
 
+    [Header("Settings")]
+    public float enemyCount = 0;
+    [SerializeField] KeyCode RestartKey;
+
     [Header("Prop Components")]
+    [SerializeField] GameObject startWall;
     [SerializeField] GameObject finishWall;
+    [SerializeField] GameObject endScreen;
+    [SerializeField] GameObject playScreen;
 
     [Header("UI Components")]
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI enemyText;
+
+    [SerializeField] TextMeshProUGUI resultTime;
+    [SerializeField] TextMeshProUGUI resultEH;
+    [SerializeField] TextMeshProUGUI resultGrade;
 
     //Bool
     [HideInInspector] public bool started;
@@ -61,6 +77,8 @@ public class DrillSession : MonoBehaviour
         {
             treeStatus = rootNode.Process();
         }
+
+        RestartingMech();
     }
 
     #endregion
@@ -71,6 +89,7 @@ public class DrillSession : MonoBehaviour
     {
         if(started)
         {
+            playScreen.SetActive(true);
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
@@ -88,6 +107,8 @@ public class DrillSession : MonoBehaviour
         if(finished)
         {
             finishWall.SetActive(false);
+            startWall.SetActive(true);
+            playScreen.SetActive(false);
             return Node.Status.SUCCESS;
         }
         return Node.Status.RUNNING;
@@ -95,8 +116,11 @@ public class DrillSession : MonoBehaviour
 
     public Node.Status GivingScore()
     {
-        Debug.Log(timer);
-        Debug.Log(enemyCount);
+        endScreen.SetActive(true);
+        resultTime.text = timer.ToString();
+        resultEH.text = enemyCount.ToString();
+        //resultGrade.text = "S";
+        CalculationsPlus();
         return Node.Status.SUCCESS;
     }
 
@@ -108,7 +132,60 @@ public class DrillSession : MonoBehaviour
     {
         started = false;
         finished = false;
+        startWall.SetActive(false);
         finishWall.SetActive(true);
+        endScreen.SetActive(false);
+        playScreen.SetActive(false);
+    }
+
+    void RestartingMech()
+    {
+        if(Input.GetKeyDown(RestartKey))
+        {
+            SceneManager.LoadScene("ACT THREE");
+        }
+    }
+
+    void CalculationsPlus()
+    {
+        if(timer < 60)
+        {
+            graderOne = 50;
+        }
+        else if(timer > 60 && timer < 130)
+        {
+            graderOne = 35;
+        }
+        else
+        {
+            graderOne = 15;
+        }
+
+        if(enemyCount >= 25)
+        {
+            graderTwo = 50;
+        }
+        else if(enemyCount < 25 && enemyCount <= 15)
+        {
+            graderTwo = 35;
+        }
+        else
+        {
+            graderTwo = 15;
+        }
+
+        if(FinalGrade >= 90)
+        {
+            resultGrade.text = "S";
+        }
+        else if(FinalGrade < 90 && FinalGrade >= 50)
+        {
+            resultGrade.text = "A";
+        }
+        else
+        {
+            resultGrade.text = "B";
+        }
     }
 
     #endregion

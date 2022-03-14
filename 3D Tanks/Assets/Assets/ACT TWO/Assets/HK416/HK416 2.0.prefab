@@ -4950,6 +4950,16 @@ MonoBehaviour:
   dropForwardForce: 15
   dropUpwardForce: 10
   equipped: 0
+  Name: GUN
+  Image: {fileID: 0}
+  DefaultImage: {fileID: 0}
+  Mag: 0
+  CurrentMode: 
+  GunName: {fileID: 0}
+  GunMode: {fileID: 0}
+  GunImage: {fileID: 0}
+  GunBullets: {fileID: 0}
+  GunMag: {fileID: 0}
 --- !u!114 &3260723272134088264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4980,11 +4990,15 @@ MonoBehaviour:
   MagzineSize: 32
   reloadTime: 2.5
   bulletDamage: 1
+  canSwitch: 0
   fpsCam: {fileID: 0}
   muzzle: {fileID: 0}
   ShootKey: 323
   ReloadKey: 0
   ModeChangeKey: 0
+  ModeChanger: 0
+  GunBullets: {fileID: 0}
+  GunMode: {fileID: 0}
 --- !u!1001 &7502168245359177188
 PrefabInstance:
   m_ObjectHideFlags: 0
