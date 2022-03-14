@@ -174,6 +174,8 @@ public class DrillSession : MonoBehaviour
             graderTwo = 15;
         }
 
+        FinalGrade = graderOne + graderTwo;
+
         if(FinalGrade >= 90)
         {
             resultGrade.text = "S";

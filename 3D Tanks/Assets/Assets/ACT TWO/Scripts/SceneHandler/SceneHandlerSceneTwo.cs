@@ -169,11 +169,6 @@ public class SceneHandlerSceneTwo : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
         if (treeStatus == Node.Status.RUNNING)
             treeStatus = rootNode.Process();
     }

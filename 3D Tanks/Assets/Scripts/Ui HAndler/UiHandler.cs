@@ -36,11 +36,6 @@ public class UiHandler : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
         MiniMapHandler();
         MusicHandler();
     }
