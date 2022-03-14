@@ -57,4 +57,9 @@ public class NoticeBoard : MonoBehaviour
     {
         SceneManager.LoadScene("Act Two");
     }
+
+    public void Drill()
+    {
+        SceneManager.LoadScene("ACT THREE");
+    }
 }
