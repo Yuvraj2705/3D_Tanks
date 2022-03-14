@@ -38,6 +38,9 @@ public class SManager : MonoBehaviour
     [SerializeField]
     ParticleSystem muzzle;
 
+    [SerializeField]
+    AudioSource fire;
+
     [Header("Keys")]
 
     [SerializeField] 
@@ -122,6 +125,7 @@ public class SManager : MonoBehaviour
                 timer = 0;
                 ShootMech();
                 Bullets = Bullets - 1;
+                fire.Play();
             }
         }
         if(canReload && Input.GetKeyDown(ReloadKey))

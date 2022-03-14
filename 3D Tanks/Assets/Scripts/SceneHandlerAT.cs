@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SceneHandlerAO : MonoBehaviour
+public class SceneHandlerAT : MonoBehaviour
 {
     [SerializeField]
     GameObject TextUI;
@@ -14,7 +14,7 @@ public class SceneHandlerAO : MonoBehaviour
     [SerializeField]
     AudioSource popAlert;
 
-    private float timer =  0;
+    private float timer = 0;
     private float timebase = 5;
 
     RootNode rootNode;
@@ -33,8 +33,9 @@ public class SceneHandlerAO : MonoBehaviour
         Leaf activateUI = new Leaf("Activate Ui", ActivateUI);
         Leaf disableUI = new Leaf("Activate Ui", DisableUI);
         Leaf textOne = new Leaf("text One", TextOne);
-        Leaf textTwo = new Leaf("text One", TextTwo);
-        Leaf textThree = new Leaf("text One", TextThree);
+        Leaf textTwo = new Leaf("text Two", TextTwo);
+        Leaf textThree = new Leaf("text Three", TextThree);
+        Leaf textFour = new Leaf("text Four", TextFour);
 
         sh.AddChild(waitFor);
         sh.AddChild(activateUI);
@@ -44,6 +45,8 @@ public class SceneHandlerAO : MonoBehaviour
         sh.AddChild(waitFor);
         sh.AddChild(textThree);
         sh.AddChild(waitFor);
+        sh.AddChild(textFour);
+        sh.AddChild(waitFor);
         sh.AddChild(disableUI);
 
         rootNode.AddChild(sh);
@@ -52,7 +55,7 @@ public class SceneHandlerAO : MonoBehaviour
     public Node.Status WaitFor()
     {
         timer += Time.deltaTime;
-        if(timer > timebase)
+        if (timer > timebase)
         {
             timer = 0;
             return Node.Status.SUCCESS;
@@ -74,21 +77,27 @@ public class SceneHandlerAO : MonoBehaviour
 
     public Node.Status TextOne()
     {
-        DisplayTextUI.text = "CASERN, a Military Base, welcomes you to play our campaign. Please visit our notice board to access the campaign.";
+        DisplayTextUI.text = "Welcome to your first Drill Session, go to the near table and pick-up any weapon.";
         popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextTwo()
     {
-        DisplayTextUI.text = "To move around the base use W, A, S, D keys, to look around use Mouse and hold LeftShift to run.";
+        DisplayTextUI.text = "There are three types of target: idle, moving and instant. Shoot them down and get the perfect score.";
         popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextThree()
     {
-        DisplayTextUI.text = "Press Tab to enable or disable the Minimap, Press M to enable or disable the Music Player.";
+        DisplayTextUI.text = "Go to the Start and follow the arrows.";
+        popAlert.Play();
+        return Node.Status.SUCCESS;
+    }
+    public Node.Status TextFour()
+    {
+        DisplayTextUI.text = "Once completed, you can press K to restart the session.";
         popAlert.Play();
         return Node.Status.SUCCESS;
     }

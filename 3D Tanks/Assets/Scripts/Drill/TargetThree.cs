@@ -16,8 +16,11 @@ public class TargetThree : ShootManager
 
     DrillSession script;
 
+    bool over;
+
     void Start()
     {
+        over = true;
         currentHits = MaxHits;
         Targetanimator = GetComponent<Animator>();
         script = GetComponent<DrillSession>();
@@ -25,11 +28,21 @@ public class TargetThree : ShootManager
 
     public override void Damage(int damage)
     {
-        currentHits -= damage;
+        /*currentHits -= damage;
         if (currentHits <= 0)
         {
             //script.enemyCount += 1;
             Targetanimator.SetBool("GoDown", true);
+        }*/
+        if (over)
+        {
+            currentHits -= damage;
+            if (currentHits <= 0)
+            {
+                GameObject.FindGameObjectWithTag("DBMS").GetComponent<DrillSession>().enemyCount += 1;
+                Targetanimator.SetBool("GoDown", true);
+                over = false;
+            }
         }
     }
 }

@@ -12,6 +12,9 @@ public class SceneHandlerSceneTwo : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI DisplayTextUI;
 
+    [SerializeField]
+    AudioSource popAlert;
+
     private float timer =  0;
     private float timebase = 2;
 
@@ -134,36 +137,42 @@ public class SceneHandlerSceneTwo : MonoBehaviour
     public Node.Status TextOne()
     {
         DisplayTextUI.text = "Welcome to your first Training Session, use W A S D to move around and LEFT SHIFT to sprint.";
+        popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextTwo()
     {
         DisplayTextUI.text = "To clear the first obstacle you need to crouch under the tires, Press LEFT CTRL to crouch.";
+        popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextThree()
     {
         DisplayTextUI.text = "To clear the second obstacle you need to jump over the obstacles, Press SPACE to jump.";
+        popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextFour()
     {
         DisplayTextUI.text = "OOPS! Lights are out, Press N to toggle the Night Vision Googles on and off.";
+        popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextFive()
     {
         DisplayTextUI.text = "To use the Tablet, Press E to interact. Using tablet you can get access to various trainings.";
+        popAlert.Play();
         return Node.Status.SUCCESS;
     }
 
     public Node.Status TextSix()
     {
         DisplayTextUI.text = "To pick up the gun press E and Q to drop, Press Left Mouse Button to Shoot and R to Reload, B to toggle between Modes";
+        popAlert.Play();
         return Node.Status.SUCCESS;
     }
 

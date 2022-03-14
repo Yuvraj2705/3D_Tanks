@@ -22,8 +22,11 @@ public class TargetTwo : ShootManager
 
     DrillSession script;
 
+    bool over;
+
     void Start()
     {
+        over = true;
         isDead = false;
         counter = 0;
         currentHits = MaxHits;
@@ -57,12 +60,16 @@ public class TargetTwo : ShootManager
 
     public override void Damage(int damage)
     {
-        currentHits -= damage;
-        if (currentHits <= 0)
+        if (over)
         {
-            //script.enemyCount += 1;
-            isDead = true;
-            Targetanimator.SetBool("GoDown", true);
+            currentHits -= damage;
+            if (currentHits <= 0)
+            {
+                GameObject.FindGameObjectWithTag("DBMS").GetComponent<DrillSession>().enemyCount += 1;
+                Targetanimator.SetBool("GoDown", true);
+                over = false;
+                isDead = true;
+            }
         }
     }
 }
