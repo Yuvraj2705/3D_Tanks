@@ -10,6 +10,7 @@ TagManager:
   - Car
   - HeliSpawn
   - SceneHandler
+  - DBMS
   layers:
   - Default
   - TransparentFX
