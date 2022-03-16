@@ -67,6 +67,7 @@ public class SManager : MonoBehaviour
 
     void Awake()
     {
+        fire = GetComponent<AudioSource>();
         canShoot = true;
         canReload = true;
         Bullets = MagzineSize;
